@@ -7,7 +7,7 @@
     "addon"
   ],
   "description": "A haxe addons for various utilities and features",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "classPath": "src",
   "releasenote": "see CHANGELOG.md",
   "contributors": [
