@@ -1,0 +1,16 @@
+{
+  "name": "haxe-addon",
+  "url": "https://github.com/Paopun20/haxe-addon",
+  "license": "MIT",
+  "tags": [
+    "haxe",
+    "addon"
+  ],
+  "description": "A haxe addon for various utilities and features.",
+  "version": "1.0.0",
+  "classPath": "src",
+  "releasenote": "see CHANGELOG.md",
+  "contributors": [
+    "paopaodev"
+  ]
+}
