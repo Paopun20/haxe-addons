@@ -1,6 +1,6 @@
-package haxe.addons;
+package haxe.addons.types;
 
-class BitFieldOutOfRange extends haxe.Exception {
+private class BitFieldOutOfRange extends haxe.Exception {
     override public function new() {
         super("BitField index out of range (0-7)");
     }
@@ -9,7 +9,7 @@ class BitFieldOutOfRange extends haxe.Exception {
 @:forward
 @:transitive
 @:analyzer(optimize, local_dce, fusion, user_var_fusion)
-abstract BitField(Int) from Int to Int {
+@:nullSafety(Strict) abstract BitField(Int) from Int to Int {
     public inline function new(value:Int = 0) {
         this = value & 0xFF; // keep only 8 bits
     }

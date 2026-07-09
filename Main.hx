@@ -1,102 +1,82 @@
 package;
 
-import haxe.addons.BitField;
-import haxe.addons.UInt8;
-import haxe.addons.Int8;
+import haxe.addons.useless.BlackHole;
+import haxe.addons.types.BitField;
+import haxe.addons.types.UInt8;
+import haxe.addons.types.Int8;
+import haxe.addons.collections.Deque;
+import haxe.addons.useless.ArrayOfBabel;
 
 class Main {
-    static function main() {
-        trace("=== Int8 ===");
+	static function dequeTest() {
+		var deque = new Deque<Int>(8);
+		var i = 0;
+		deque.append(++i);
+		trace((deque : Array<Int>));
+	}
 
-        var a:Int8 = 127;
-        trace(a); // 127
+	static function int8Test() {
+		var a:Int8 = 127;
+		trace(a); // 127
 
-        a += 1;
-        trace(a); // -128
+		a += 1;
+		trace(a); // -128
 
-        a += 1;
-        trace(a); // -127
+		a += 1;
+		trace(a); // -127
 
-        a = -128;
-        a -= 1;
-        trace(a); // 127
+		a = -128;
+		a -= 1;
+		trace(a); // 127
 
-        var b:Int8 = 100;
-        var c:Int8 = 50;
+		var b:Int8 = 100;
+		var c:Int8 = 50;
 
-        trace(b + c); // -106
-        trace(b - c); // 50
-        trace(b * c); // wrap
-        trace(-b);    // -100
+		trace(b + c); // -106
+		trace(b - c); // 50
+		trace(b * c); // wrap
+		trace(-b); // -100
+	}
 
-        trace("");
+	static function uint8Test() {
+		var u:UInt8 = 255;
+		trace(u);
 
-        trace("=== UInt8 ===");
+		u += 1;
+		trace(u); // 0
 
-        var u:UInt8 = 255;
-        trace(u);
+		u -= 1;
+		trace(u); // 255
 
-        u += 1;
-        trace(u); // 0
+		var x:UInt8 = 200;
+		var y:UInt8 = 100;
 
-        u -= 1;
-        trace(u); // 255
+		trace(x + y); // 44
+		trace(x - y); // 100
+	}
 
-        var x:UInt8 = 200;
-        var y:UInt8 = 100;
+	static function bitfieldTest() {
+		var bits = new BitField();
 
-        trace(x + y); // 44
-        trace(x - y); // 100
+		bits[0] = true;
+		bits[3] = true;
+		bits[7] = true;
 
-        trace("");
+		trace(bits);
 
-        trace("=== BitField ===");
+		for (i in 0...8)
+			trace('bit[$i] = ${bits[i]}');
 
-        var bits = new BitField();
+		bits[3] = false;
 
-        bits[0] = true;
-        bits[3] = true;
-        bits[7] = true;
+		trace(bits);
+	}
 
-        trace(bits);
-
-        for (i in 0...8)
-            trace('bit[$i] = ${bits[i]}');
-
-        bits[3] = false;
-
-        trace(bits);
-
-        trace("");
-
-        trace("=== Cast ===");
-
-        var i:Int = a;
-        trace(i);
-
-        var ii:Int8 = 300;
-        trace(ii); // 44
-
-        var uu:UInt8 = -1;
-        trace(uu); // 255
-
-        trace("");
-
-        trace("=== Bitwise ===");
-
-        var p:Int8 = 25;
-        var q:Int8 = 67;
-
-        trace(p & q);
-        trace(p | q);
-        trace(p ^ q);
-        trace(~p);
-
-        trace("");
-
-        trace("=== Shift ===");
-
-        trace((p << 1));
-        trace((p >> 1));
-    }
+	static function main() {
+		dequeTest();
+		int8Test();
+		uint8Test();
+		bitfieldTest();
+		trace((new BlackHole<String>()).push("hi"));
+	}
 }

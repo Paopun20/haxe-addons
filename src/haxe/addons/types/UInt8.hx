@@ -1,7 +1,7 @@
-package haxe.addons;
+package haxe.addons.types;
 
 #if cpp
-typedef UInt8 = cpp.types.UInt8;
+typedef UInt8 = cpp.UInt8;
 #elseif cs
 typedef UInt8 = cs.UInt8.UInt8;
 #else

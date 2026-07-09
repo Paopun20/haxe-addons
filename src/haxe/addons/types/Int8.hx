@@ -1,7 +1,7 @@
-package haxe.addons;
+package haxe.addons.types;
 
 #if cpp
-typedef Int8 = cpp.types.Int8;
+typedef Int8 = cpp.Int8;
 #elseif cs
 typedef Int8 = cs.types.Int8;
 #elseif java
@@ -10,7 +10,7 @@ typedef Int8 = java.types.Int8;
 @:forward
 @:transitive
 @:analyzer(optimize, local_dce, fusion, user_var_fusion)
-abstract Int8(Int) from Int to Int {
+@:nullSafety(Strict) abstract Int8(Int) from Int to Int {
 	public inline function new(value:Int = 0) {
 		this = normalize(value);
 	}
