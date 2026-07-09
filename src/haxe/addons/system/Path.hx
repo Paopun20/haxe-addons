@@ -3,7 +3,9 @@ package haxe.addons.system;
 import sys.FileSystem;
 import sys.io.File;
 
-abstract Path(String) from String to String {
+@:transitive
+@:analyzer(optimize, local_dce, fusion, user_var_fusion)
+@:nullSafety(Off) abstract Path(String) from String to String {
 
     public inline function new(path:String) {
         this = normalize(path);
