@@ -113,7 +113,6 @@ import sys.io.File;
         return FileSystem.stat(this);
     }
 
-    // ---- filesystem mutation ----
     public function mkdir(parents:Bool = false, existOk:Bool = false):Void {
         if (FileSystem.exists(this)) {
             if (!existOk) throw '$this already exists';
