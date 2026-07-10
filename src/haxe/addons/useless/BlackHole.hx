@@ -16,6 +16,7 @@ package haxe.addons.useless;
 		return value;
 
 	public var length(get, never):Int;
+
 	inline function get_length():Int
 		return 0;
 }

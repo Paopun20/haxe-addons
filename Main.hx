@@ -77,7 +77,5 @@ class Main {
 		int8Test();
 		uint8Test();
 		bitfieldTest();
-		var b = new ArrayOfBabel();
-		trace(b);
 	}
 }

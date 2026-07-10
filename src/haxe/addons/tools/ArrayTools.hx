@@ -13,7 +13,7 @@ package haxe.addons.tools;
 		return arr;
 	}
 
-	public static inline function forEach<T>(arr:Array<T>, f:(T)->Void)
+	public static inline function forEach<T>(arr:Array<T>, f:(T) -> Void)
 		for (v in arr)
 			f(v);
 

@@ -16,6 +16,6 @@ import haxe.Constraints.NotVoid;
 		return toString(); // The array is too large
 
 	@:arrayAccess
-	function arrayRead(index: NotVoid):ArrayOfBabel
+	function arrayRead(index:NotVoid):ArrayOfBabel
 		return this[0];
 }
