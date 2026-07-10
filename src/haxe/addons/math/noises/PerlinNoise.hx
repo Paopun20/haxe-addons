@@ -1,6 +1,8 @@
 package haxe.addons.math.noises;
 
-class PerlinNoise {
+@:transitive
+@:analyzer(optimize, local_dce, fusion, user_var_fusion)
+@:nullSafety(Strict) class PerlinNoise {
 	static inline function fade(t:Float):Float {
 		// Ken Perlin's fade curve
 		return t * t * t * (t * (t * 6 - 15) + 10);
@@ -25,35 +27,19 @@ class PerlinNoise {
 
 	static function gradient(x:Int, y:Int, seed:Int):Int {
 		var h = hash(x, y, seed);
-
 		return h & 7;
 	}
 
 	static function grad(hash:Int, x:Float, y:Float):Float {
 		return switch (hash & 7) {
-			case 0:
-				x + y;
-
-			case 1:
-				-x + y;
-
-			case 2:
-				x - y;
-
-			case 3:
-				-x - y;
-
-			case 4:
-				x;
-
-			case 5:
-				-x;
-
-			case 6:
-				y;
-
-			default:
-				-y;
+			case 0: x + y;
+			case 1: -x + y;
+			case 2: x - y;
+			case 3: -x - y;
+			case 4: x;
+			case 5: -x;
+			case 6: y;
+			default: -y;
 		}
 	}
 

@@ -2,7 +2,9 @@ package haxe.addons.math.noises;
 
 import haxe.addons.math.noises.NoiseTypes.NoiseFunction;
 
-class Fractal {
+@:transitive
+@:analyzer(optimize, local_dce, fusion, user_var_fusion)
+@:nullSafety(Strict) class Fractal {
 	public static function fbm(noise:NoiseFunction, x:Float, y:Float, octaves:Int = 5, persistence:Float = 0.5, lacunarity:Float = 2.0, seed:Int = 0):Float {
 		var value = 0.0;
 

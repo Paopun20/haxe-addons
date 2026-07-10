@@ -1,6 +1,8 @@
 package haxe.addons.math.noises;
 
-class ValueNoise {
+@:transitive
+@:analyzer(optimize, local_dce, fusion, user_var_fusion)
+@:nullSafety(Strict) class ValueNoise {
 	static inline function fade(t:Float):Float {
 		// Smoothstep
 		return t * t * (3.0 - 2.0 * t);

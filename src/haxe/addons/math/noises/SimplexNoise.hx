@@ -1,6 +1,8 @@
 package haxe.addons.math.noises;
 
-class SimplexNoise {
+@:transitive
+@:analyzer(optimize, local_dce, fusion, user_var_fusion)
+@:nullSafety(Strict) class SimplexNoise {
 	static inline var F2:Float = 0.366025403;
 	static inline var G2:Float = 0.211324865;
 

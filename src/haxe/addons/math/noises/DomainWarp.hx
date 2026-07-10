@@ -2,7 +2,9 @@ package haxe.addons.math.noises;
 
 import haxe.addons.math.noises.NoiseTypes.NoiseFunction;
 
-class DomainWarp {
+@:transitive
+@:analyzer(optimize, local_dce, fusion, user_var_fusion)
+@:nullSafety(Strict) class DomainWarp {
 	public static function warp2D(noise:NoiseFunction, warpNoise:NoiseFunction, x:Float, y:Float, strength:Float = 1.0, seed:Int = 0):Float {
 		var wx = warpNoise(x, y, seed);
 

@@ -3,7 +3,9 @@ package haxe.addons.math.noises;
 import haxe.addons.math.noises.NoiseTypes.Noise3D;
 import haxe.addons.math.noises.NoiseTypes.Noise2D;
 
-class NoiseMap {
+@:transitive
+@:analyzer(optimize, local_dce, fusion, user_var_fusion)
+@:nullSafety(Strict) class NoiseMap {
 	public static function build2D(width:Int, height:Int, noise:Noise2D, scale:Float = 1.0, xOffset:Float = 0.0, yOffset:Float = 0.0,
 			seed:Int = 0):Array<Array<Float>> {
 		if (width <= 0 || height <= 0)

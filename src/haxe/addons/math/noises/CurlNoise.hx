@@ -3,7 +3,9 @@ package haxe.addons.math.noises;
 import haxe.addons.math.MathTypes.Vector2;
 import haxe.addons.math.noises.NoiseTypes.NoiseFunction;
 
-class CurlNoise {
+@:transitive
+@:analyzer(optimize, local_dce, fusion, user_var_fusion)
+@:nullSafety(Strict) class CurlNoise {
 	/**
 	 * Calculate 2D curl from scalar noise field
 	 */

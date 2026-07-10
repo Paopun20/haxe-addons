@@ -1,6 +1,8 @@
 package haxe.addons.math.noises;
 
-class OpenSimplex2 {
+@:transitive
+@:analyzer(optimize, local_dce, fusion, user_var_fusion)
+@:nullSafety(Strict) class OpenSimplex2 {
 	static inline var F2:Float = 0.3660254037844386;
 	static inline var G2:Float = 0.21132486540518713;
 	static inline var F3:Float = 1.0 / 3.0;

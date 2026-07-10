@@ -1,6 +1,8 @@
 package haxe.addons.math.noises;
 
-class WorleyNoise {
+@:transitive
+@:analyzer(optimize, local_dce, fusion, user_var_fusion)
+@:nullSafety(Strict) class WorleyNoise {
 	static function hash(x:Int, y:Int, seed:Int):Int {
 		var h = x;
 

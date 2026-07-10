@@ -6,7 +6,9 @@ import haxe.addons.math.noises.NoiseTypes.Noise2D;
 import haxe.addons.math.noises.NoiseTypes.Noise3D;
 import haxe.addons.math.noises.NoiseTypes.NoiseFunction;
 
-class Noise {
+@:transitive
+@:analyzer(optimize, local_dce, fusion, user_var_fusion)
+@:nullSafety(Strict) class Noise {
 	public static inline function cellularSample2D(x:Float, y:Float, seed:Int = 0, jitter:Float = 1.0):Float {
 		return CellularNoise.sample2D(x, y, seed, jitter);
 	}
