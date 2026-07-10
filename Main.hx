@@ -77,6 +77,7 @@ class Main {
 		int8Test();
 		uint8Test();
 		bitfieldTest();
-		trace((new BlackHole<String>()).push("hi"));
+		var b = new ArrayOfBabel();
+		trace(b);
 	}
 }

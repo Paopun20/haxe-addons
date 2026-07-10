@@ -5,7 +5,6 @@ typedef UInt8 = cpp.UInt8;
 #elseif cs
 typedef UInt8 = cs.UInt8.UInt8;
 #else
-import Std;
 @:forward
 @:transitive
 @:analyzer(optimize, local_dce, fusion, user_var_fusion)

@@ -1,6 +1,7 @@
 package haxe.addons.tools;
 
-class BetterStringTools extends StringTools {
+@:analyzer(optimize, local_dce, fusion, user_var_fusion)
+@:nullSafety(Strict) class StringTools {
 	public static inline function isNullOrEmpty(s:String):Bool
 		return s == null || s.length == 0;
 

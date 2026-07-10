@@ -1,17 +1,21 @@
 package haxe.addons.useless;
 
-abstract ArrayOfBabel(Array<ArrayOfBabel>) {
+import haxe.Constraints.NotVoid;
+
+@:forward
+@:transitive
+@:analyzer(optimize, local_dce, fusion, user_var_fusion)
+@:nullSafety(Strict) abstract ArrayOfBabel(Array<ArrayOfBabel>) {
 	public function new() {
 		this = [];
 		this.push(cast this);
 	}
 
-	@:arrayAccess
-	function arrayRead(index:Int):ArrayOfBabel
-		return this[0];
+	@:to
+	inline function toString():String
+		return toString(); // The array is too large
 
 	@:arrayAccess
-	function arrayWrite(index:Int, value:ArrayOfBabel): ArrayOfBabel {
-		return this[index] = value;
-	}
+	function arrayRead(index: NotVoid):ArrayOfBabel
+		return this[0];
 }

@@ -1,6 +1,7 @@
 package haxe.addons.tools;
 
-class FloatTools {
+@:analyzer(optimize, local_dce, fusion, user_var_fusion)
+@:nullSafety(Strict) class FloatTools {
 	public static inline function clamp(v:Float, min:Float, max:Float):Float
 		return Math.max(min, Math.min(max, v));
 

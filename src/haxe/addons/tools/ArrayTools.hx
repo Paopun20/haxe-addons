@@ -1,6 +1,7 @@
 package haxe.addons.tools;
 
-class ArrayTools {
+@:analyzer(optimize, local_dce, fusion, user_var_fusion)
+@:nullSafety(Strict) class ArrayTools {
 	public static function shuffle<T>(arr:Array<T>):Array<T> {
 		var i = arr.length;
 		while (i > 1) {

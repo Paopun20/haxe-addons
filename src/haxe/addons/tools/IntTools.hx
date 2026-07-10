@@ -1,6 +1,7 @@
 package haxe.addons.tools;
 
-class IntTools {
+@:analyzer(optimize, local_dce, fusion, user_var_fusion)
+@:nullSafety(Strict) class IntTools {
 	public static inline function inRange(v:Int, min:Int, max:Int):Bool
 		return v >= min && v <= max;
 
