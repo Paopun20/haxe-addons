@@ -1,5 +1,6 @@
 package haxe.addons.tools;
 
+@:transitive
 @:analyzer(optimize, local_dce, fusion, user_var_fusion)
 @:nullSafety(Strict) class StringTools {
 	public static inline function isNullOrEmpty(s:String):Bool

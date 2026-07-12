@@ -2,9 +2,7 @@ package haxe.addons.math;
 
 import haxe.addons.math.MathTypes.Vector2;
 import haxe.addons.math.noises.*;
-import haxe.addons.math.noises.NoiseTypes.Noise2D;
-import haxe.addons.math.noises.NoiseTypes.Noise3D;
-import haxe.addons.math.noises.NoiseTypes.NoiseFunction;
+import haxe.addons.math.noises.NoiseTypes;
 
 @:transitive
 @:analyzer(optimize, local_dce, fusion, user_var_fusion)

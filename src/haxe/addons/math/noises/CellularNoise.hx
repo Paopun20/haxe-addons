@@ -3,7 +3,7 @@ package haxe.addons.math.noises;
 @:transitive
 @:analyzer(optimize, local_dce, fusion, user_var_fusion)
 @:nullSafety(Strict) class CellularNoise {
-	static function hash(x:Int, y:Int, seed:Int):Int {
+	static inline function hash(x:Int, y:Int, seed:Int):Int {
 		var h = x;
 
 		h = h * 374761393;
@@ -16,7 +16,7 @@ package haxe.addons.math.noises;
 		return h;
 	}
 
-	static function hash3D(x:Int, y:Int, z:Int, seed:Int):Int {
+	static inline function hash3D(x:Int, y:Int, z:Int, seed:Int):Int {
 		var h = x;
 
 		h = h * 374761393;

@@ -7,7 +7,6 @@ typedef Int8 = cs.types.Int8;
 #elseif java
 typedef Int8 = java.types.Int8;
 #else
-@:forward
 @:transitive
 @:analyzer(optimize, local_dce, fusion, user_var_fusion)
 @:nullSafety(Strict) abstract Int8(Int) from Int to Int {

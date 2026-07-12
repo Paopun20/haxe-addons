@@ -1,5 +1,6 @@
 package haxe.addons.tools;
 
+@:transitive
 @:analyzer(optimize, local_dce, fusion, user_var_fusion)
 @:nullSafety(Strict) class ArrayTools {
 	public static function shuffle<T>(arr:Array<T>):Array<T> {

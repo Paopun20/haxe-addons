@@ -1,12 +1,15 @@
 package haxe.addons.tools;
 
+import haxe.addons.math.Interpolation;
+
+@:transitive
 @:analyzer(optimize, local_dce, fusion, user_var_fusion)
 @:nullSafety(Strict) class FloatTools {
-	public static inline function clamp(v:Float, min:Float, max:Float):Float
-		return Math.max(min, Math.min(max, v));
+	public static inline function clamp(t:Float, min:Float, max:Float):Float
+		return Interpolation.clamp(t, min, max);
 
 	public static inline function lerp(a:Float, b:Float, t:Float):Float
-		return a + (b - a) * t;
+		return Interpolation.lerp(a, b, t);
 
 	public static inline function remap(v:Float, inMin:Float, inMax:Float, outMin:Float, outMax:Float):Float
 		return outMin + (v - inMin) / (inMax - inMin) * (outMax - outMin);
@@ -56,14 +59,12 @@ package haxe.addons.tools;
 
 	/** Smooth 3rd-order interpolation — no overshoot, feels more natural than lerp */
 	public static inline function smoothStep(edge0:Float, edge1:Float, v:Float):Float {
-		var t = clamp((v - edge0) / (edge1 - edge0), 0, 1);
-		return t * t * (3 - 2 * t);
+		return Interpolation.smoothStep(edge0, edge1, v);
 	}
 
 	/** Smoother 5th-order version of smoothStep */
 	public static inline function smootherStep(edge0:Float, edge1:Float, v:Float):Float {
-		var t = clamp((v - edge0) / (edge1 - edge0), 0, 1);
-		return t * t * t * (t * (t * 6 - 15) + 10);
+		return Interpolation.smoothStep(edge0, edge1, v);
 	}
 
 	/** Inverse lerp — what t produces v between a and b? Returns 0–1 */

@@ -5,7 +5,6 @@ typedef UInt8 = cpp.UInt8;
 #elseif cs
 typedef UInt8 = cs.UInt8.UInt8;
 #else
-@:forward
 @:transitive
 @:analyzer(optimize, local_dce, fusion, user_var_fusion)
 @:nullSafety(Strict) abstract UInt8(Int) from Int to Int {
