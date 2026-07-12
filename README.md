@@ -1,5 +1,5 @@
-# Haxe Addon
+# Haxe addons
 
 ## About
 
-**Haxe Addon** is a collection of useful addons and utilities for the Haxe.
+**Haxe Addons** is a collection of useful addons and utilities for the Haxe.
