@@ -6,7 +6,7 @@ Common math-related type aliases.
 import haxe.addons.math.MathTypes;
 ```
 
-## Vector2\<T = Float\>
+## Vector2<T = Float\>
 
 ```haxe
 typedef Vector2<T = Float> = { x:T; y:T; }
@@ -14,7 +14,7 @@ typedef Vector2<T = Float> = { x:T; y:T; }
 
 A 2D vector structure.
 
-## Vector3\<T = Float\>
+## Vector3<T = Float\>
 
 ```haxe
 typedef Vector3<T = Float> = { x:T; y:T; z:T; }

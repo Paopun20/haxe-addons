@@ -30,21 +30,21 @@ Push to the right end. Evicts leftmost element if bounded and full.
 
 Push to the left end. Evicts rightmost element if bounded and full.
 
-### pop():Null\<T\>
+### pop():Null<T\>
 
 Remove and return the rightmost element. Returns `null` if empty.
 
-### popLeft():Null\<T\>
+### popLeft():Null<T\>
 
 Remove and return the leftmost element. Returns `null` if empty.
 
-### iterator():Iterator\<T\>
+### iterator():Iterator<T\>
 
 Iterate from left to right.
 
 ## Static Methods
 
-### fromArray\<T\>(array:Array\<T\>):Deque\<T\>
+### fromArray<T\>(array:Array<T\>):Deque<T\>
 
 Create a deque from an existing array.
 
