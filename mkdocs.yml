@@ -1,0 +1,172 @@
+site_name: Haxe Addons
+site_url: https://github.com/Paopun20/haxe-addons
+repo_url: https://github.com/Paopun20/haxe-addons
+repo_name: Paopun20/haxe-addons
+edit_uri: blob/main/docs/
+
+theme:
+  name: material
+  icon:
+    logo: simple/haxe
+  favicon: images/favicon.png
+  font:
+    text: Roboto
+    code: Roboto Mono
+
+  features:
+    # Content Features
+    - content.code.copy # Enable copy button for code blocks
+    - content.code.annotate # Enable annotations in code blocks
+    - content.code.select # Enable selection highlighting
+    - content.code.highlight # Enable syntax highlighting
+    - content.code.line-numbers # Add line numbers to code blocks
+    - content.tabs.link # Link tabs for better navigation
+    # Navigation Features
+    - navigation.expand # Expand navigation sections by default
+    - navigation.indexes # Include index pages in navigation
+    - navigation.tabs # Use tabs for top-level navigation
+    - navigation.sections # Group navigation items into sections
+    - navigation.top # Add a back-to-top button
+    # Search Features
+    - search.highlight # Highlight search terms on page
+    - search.share # Enable sharing search queries
+    - search.suggest # Provide search suggestions
+    # Table of Contents
+    - toc.integrate # Integrate TOC with navigation sidebar
+    # Back to Top
+    - content.code.back-to-top # Add back-to-top button for code blocks
+
+  palette:
+    # Palette toggle for automatic switching based on system preference
+    - media: "(prefers-color-scheme)"
+      scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/lightbulb-auto
+        name: Switch to light mode
+    # Palette for light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/lightbulb
+        name: Switch to dark mode
+    # Palette for dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: black
+      accent: indigo
+      toggle:
+        icon: material/lightbulb-outline
+        name: Switch to system preference
+
+  highlightjs: true
+  hljs_languages:
+    - haxe
+
+extra:
+  status:
+    new: New
+    deprecated: Deprecated
+    experimental: Experimental
+  repo_icon: material/github
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/Paopun20
+
+# Markdown Extensions
+markdown_extensions:
+  # Standard Markdown Extensions
+  - abbr
+  - admonition # For callout blocks (notes, warnings, etc.)
+  - attr_list # For adding attributes to Markdown elements
+  - def_list
+  - footnotes
+  - md_in_html # Allow Markdown inside HTML blocks
+  - toc:
+      permalink: true # Add permalink anchors to headings
+
+  # PyMdown Extensions (Highly recommended for Material)
+  - pymdownx.arithmatex: # For LaTeX math rendering
+      generic: true
+  - pymdownx.betterem: # Improved emphasis handling
+      smart_enable: all
+  - pymdownx.caret # For inserting superscript/subscript
+  - pymdownx.details # For collapsible details/summary elements
+  - pymdownx.emoji: # For emoji support
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+  - pymdownx.highlight: # Enhanced code highlighting
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite # For highlighting inline code
+  - pymdownx.keys # For keyboard key formatting
+  - pymdownx.magiclink: # Automatically link GitHub issues, commits, etc.
+      normalize_issue_symbols: true
+      repo_url_shorthand: true
+      user: Paopun20 # GitHub username
+      repo: haxe-addons # GitHub repository name
+  - pymdownx.mark # For highlighting text
+  - pymdownx.smartsymbols # For smart quotes, arrows, etc.
+  - pymdownx.snippets: # For including external files in docs
+      auto_append:
+        - includes/mkdocs.md # Example include file
+  - pymdownx.superfences: # Enhanced code fences
+      custom_fences:
+        - name: mermaid # For Mermaid diagrams (like the one shown on the site)
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed: # For tabbed content
+      alternate_style: true
+      combine_header_slug: true
+      slugify: !!python/object/apply:pymdownx.slugs.slugify
+        kwds:
+          case: lower
+  - pymdownx.tasklist: # For checklists
+      custom_checkbox: true
+  - pymdownx.tilde # For strikethrough text
+
+extra_javascript:
+  - path: https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
+  - path: https://unpkg.com/katex@0/dist/katex.min.js
+  - path: https://unpkg.com/katex@0/dist/contrib/auto-render.min.js
+
+nav:
+  - Home: index.md
+  - Api Reference:
+      - Collections:
+          - Deque: collections/deque.md
+      - Math:
+          - Interpolation: math/interpolation.md
+          - MathTypes: math/mathtypes.md
+          - Noise API: math/noise.md
+          - Noise Algorithms:
+              - CellularNoise: math/noises/cellular.md
+              - CurlNoise: math/noises/curl.md
+              - DomainWarp: math/noises/domainwarp.md
+              - Fractal: math/noises/fractal.md
+              - NoiseMap: math/noises/noisemap.md
+              - NoiseTypes: math/noises/noisetypes.md
+              - OpenSimplex2: math/noises/opensimplex2.md
+              - PerlinNoise: math/noises/perlin.md
+              - SimplexNoise: math/noises/simplex.md
+              - ValueNoise: math/noises/value.md
+              - WorleyNoise: math/noises/worley.md
+      - System:
+          - Path: system/path.md
+      - Tools:
+          - ArrayTools: tools/arraytools.md
+          - FloatTools: tools/floattools.md
+          - IntTools: tools/inttools.md
+          - StringTools: tools/stringtools.md
+      - Types:
+          - BitField: types/bitfield.md
+          - Int8: types/int8.md
+          - UInt8: types/uint8.md
+      - Useless:
+          - ArrayOfBabel: useless/arrayofbabel.md
+          - BlackHole: useless/blackhole.md
+          - QuantumBoolean: useless/quantumboolean.md

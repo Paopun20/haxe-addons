@@ -1,11 +1,10 @@
 package;
 
-import haxe.addons.useless.BlackHole;
 import haxe.addons.types.BitField;
 import haxe.addons.types.UInt8;
 import haxe.addons.types.Int8;
 import haxe.addons.collections.Deque;
-import haxe.addons.useless.ArrayOfBabel;
+import haxe.addons.system.Path;
 
 class Main {
 	static function dequeTest() {
@@ -72,10 +71,27 @@ class Main {
 		trace(bits);
 	}
 
+	static function pathTest() {
+		var path:Path = "path/to";
+		trace(path.toString());
+
+		var path:Path = new Path(Path.home()) / "video";
+		trace(path.toString());
+
+		trace(Sys.programPath());
+		trace(new Path(Sys.programPath()));
+		trace(new Path(Sys.programPath()).parent);
+
+		var folder = new Path(Sys.programPath()).parent / "newFolder";
+		trace(folder);
+		folder.mkdir(true, true);
+	}
+
 	static function main() {
 		dequeTest();
 		int8Test();
 		uint8Test();
 		bitfieldTest();
+		pathTest();
 	}
 }

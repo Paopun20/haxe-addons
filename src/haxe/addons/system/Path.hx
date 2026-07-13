@@ -138,7 +138,9 @@ import sys.io.File;
 		Returns the final component of the path, i.e. everything after
 		the last `/`.
 	**/
-	public function name():String {
+	public var name(get, never):String;
+
+	public function get_name():String {
 		var parts = this.split("/");
 		return parts[parts.length - 1];
 	}
@@ -149,8 +151,10 @@ import sys.io.File;
 		A leading dot (as in dotfiles like `.bashrc`) is not treated as a
 		suffix separator, so `.bashrc` returns `.bashrc` in full.
 	**/
-	public function stem():String {
-		var n = name();
+	public var stem(get, never):String;
+
+	public function get_stem():String {
+		var n = name;
 		var dot = n.lastIndexOf(".");
 		if (dot <= 0)
 			return n; // no dot, or dotfile like ".bashrc"
@@ -161,8 +165,10 @@ import sys.io.File;
 		Returns the last file extension of the final component, including
 		the leading dot (e.g. `".txt"`), or `""` if there is none.
 	**/
-	public function suffix():String {
-		var n = name();
+	public var suffix(get, never):String;
+
+	public function get_suffix():String {
+		var n = name;
 		var dot = n.lastIndexOf(".");
 		if (dot <= 0)
 			return "";
@@ -175,8 +181,10 @@ import sys.io.File;
 
 		Returns an empty array if the final component has no dots.
 	**/
-	public function suffixes():Array<String> {
-		var n = name();
+	public var suffixes(get, never):Array<String>;
+
+	public function get_suffixes():Array<String> {
+		var n = name;
 		var parts = n.split(".");
 		if (parts.length <= 1)
 			return [];
@@ -191,7 +199,9 @@ import sys.io.File;
 		`"/"`, `"C:/"`, `"//server/share/"`) if this path is a direct
 		child of that root.
 	**/
-	public function parent():Path {
+	public var parent(get, never):Path;
+
+	public function get_parent():Path {
 		var rl = rootLength(this);
 		var idx = this.lastIndexOf("/");
 		if (idx < 0)
@@ -206,18 +216,20 @@ import sys.io.File;
 		immediate parent up to (and, if this path is absolute, including)
 		its root (e.g. `"/"`, `"C:/"`, or `"//server/share/"`).
 	**/
-	public function parents():Array<Path> {
-		var result = [];
-		var cur = parent();
+	public var parents(get, never):Array<Path>;
+
+	public function get_parents():Array<Path> {
+		var result:Array<Path> = [];
+		var cur:Path = parent;
 		while (true) {
-			var s = cur.toString();
-			var rl = rootLength(s);
-			var isRoot = rl > 0 && rl == s.length;
-			if (s == "." || isRoot)
+			var partString = cur.toString();
+			var rl = rootLength(partString);
+			var isRoot = rl > 0 && rl == partString.length;
+			if (partString == "." || isRoot)
 				break;
 			result.push(cur);
-			var next = cur.parent();
-			if (next.toString() == s)
+			var next = cur.parent;
+			if (next.toString() == partString)
 				break;
 			cur = next;
 		}
@@ -260,7 +272,7 @@ import sys.io.File;
 		keeping the same parent directory.
 	**/
 	public function withName(newName:String):Path {
-		return parent() / newName;
+		return parent / newName;
 	}
 
 	/**
@@ -268,7 +280,7 @@ import sys.io.File;
 		by `newSuffix` (which should include the leading dot, e.g. `".md"`).
 	**/
 	public function withSuffix(newSuffix:String):Path {
-		return parent() / (stem() + newSuffix);
+		return parent / (stem() + newSuffix);
 	}
 
 	/**
@@ -331,7 +343,7 @@ import sys.io.File;
 			var cur:Path = this;
 			while (cur.toString() != "." && !cur.exists()) {
 				toCreate.push(cur);
-				var next = cur.parent();
+				var next = cur.parent;
 				if (next.toString() == cur.toString())
 					break;
 				cur = next;
