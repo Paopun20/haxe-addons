@@ -1,0 +1,21 @@
+{% extends "main.html" %} {% block htmltitle %}
+<title>404 - Page Not Found | Haxe Addons</title>
+{% endblock %} {% block content %}
+<section class="error-page">
+  <h1>Oops! Page Not Found</h1>
+
+  <p>The page you are looking for may have been moved, renamed, or deleted.</p>
+
+  <div class="meme">
+    <img
+      src="https://static.klipy.com/ii/4493325008d34b7bf8cd6813cd5c1619/e9/e5/BxWKxwfjevWT9N.webp"
+      alt="I'm crine meme"
+      style="max-width: 350px; border-radius: 12px"
+    />
+
+    <p>This page is gone... I'm crine 😭🥀🙏🏻</p>
+  </div>
+
+  <a href="{{ 'index.html' | url }}"> Return to the Homepage </a>
+</section>
+{% endblock %}
