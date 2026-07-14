@@ -280,7 +280,7 @@ import sys.io.File;
 		by `newSuffix` (which should include the leading dot, e.g. `".md"`).
 	**/
 	public function withSuffix(newSuffix:String):Path {
-		return parent / (stem() + newSuffix);
+		return parent / (stem + newSuffix);
 	}
 
 	/**

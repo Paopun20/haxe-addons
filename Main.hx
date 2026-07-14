@@ -72,6 +72,8 @@ class Main {
 	}
 
 	static function pathTest() {
+		var cwd: Path = Path.cwd();
+		trace(cwd);
 		var path:Path = "path/to";
 		trace(path.toString());
 
