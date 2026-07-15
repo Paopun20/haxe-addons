@@ -11,14 +11,21 @@ theme:
   icon:
     logo: simple/haxe
     repo: fontawesome/brands/github
+    edit: material/pencil
+    view: material/eye
 
   favicon: images/favicon.png
 
   font:
-    text: Roboto
-    code: Roboto Mono
+    text: Inter
+    code: JetBrainsMono Nerd Font Propo
 
   features:
+    - offline
+    - optimize
+    - minify
+
+    - content.action.edit
     - content.code.copy
     - content.code.annotate
     - content.code.select
@@ -30,6 +37,7 @@ theme:
     - navigation.tabs
     - navigation.top
 
+    - search
     - search.highlight
     - search.share
     - search.suggest
@@ -63,9 +71,13 @@ theme:
 
 plugins:
   - search
+  - git-authors
+  - git-revision-date-localized:
+      type: iso_datetime
 
 extra:
   generator: false
+  scope: /
 
   status:
     new: New
@@ -73,8 +85,6 @@ extra:
     experimental: Experimental
 
   social:
-    - icon: fontawesome/brands/github
-      link: https://github.com/Paopun20
 
 markdown_extensions:
   - abbr
@@ -106,7 +116,7 @@ markdown_extensions:
       pygments_lang_class: true
       extend_pygments_lang:
         - name: haxe
-          lang: haxe
+          lang: haxe-addons
           options:
             stripnl: false
 
@@ -146,6 +156,9 @@ markdown_extensions:
 
   - pymdownx.tilde
 
+extra_css:
+  - assets/css/fonts.css
+
 extra_javascript:
   - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
   - https://unpkg.com/mermaid/dist/mermaid.min.js
@@ -176,6 +189,9 @@ nav:
 
       - System:
           - Path: system/path.md
+
+      - Thread:
+          - Simple Threading: thread/thread.md
 
       - Tools:
           - ArrayTools: tools/arraytools.md

@@ -8,8 +8,16 @@ A curated collection of useful addons, utilities, and experimental modules for t
 haxelib git haxe-addons https://github.com/Paopun20/haxe-addons
 ```
 
-Then in your `.hxml`:
+Then include it in your project.
 
-```hxml
--lib haxe-addons
-```
+=== "Base Haxe"
+
+    ```hxml
+    -lib haxe-addons
+    ```
+
+=== "Lime | OpenFL"
+
+    ```xml
+    <haxelib name="haxe-addons" />
+    ```

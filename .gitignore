@@ -1,3 +1,4 @@
 bin/
 site/
 uv.lock
+__pycache__

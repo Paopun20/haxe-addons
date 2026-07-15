@@ -1,12 +1,11 @@
 import re
-
 from pygments.lexer import RegexLexer, bygroups, words  # type: ignore
 from pygments.token import *  # type: ignore
 
 
 class BetterHaxeLexer(RegexLexer):
     name = "Haxe"
-    aliases = ["haxe"]
+    aliases = ["haxe", "haxe-addons"]
     filenames = ["*.hx"]
 
     flags = re.MULTILINE | re.DOTALL
@@ -75,62 +74,51 @@ class BetterHaxeLexer(RegexLexer):
 
     tokens = {
         "root": [
-            # whitespace
             (r"\s+", Text),
-            # comments
             (r"//.*?$", Comment.Single),
             (r"/\*", Comment.Multiline, "comment"),
-            # compiler directives
             (r"#(if|elseif|else|end|error)\b", Comment.Preproc),
-            # metadata
             (r"@:[A-Za-z_]\w*", Name.Decorator),
-            # namespace keywords
             (r"\b(package|import|using)\b", Keyword.Namespace),
-            # declarations (highest priority)
+            # Declarations
             (
-                r"\b(class|interface|enum|typedef|abstract)" r"(\s+)([A-Z]\w*)",
+                r"\b(class|interface|enum|typedef|abstract)\b(\s+)([A-Z]\w*)",
                 bygroups(Keyword, Text, Name.Class),
             ),
             (
-                r"\b(function)(\s+)([A-Za-z_]\w*)",
+                r"\b(function)\b(\s+)([A-Za-z_]\w*)",
                 bygroups(Keyword, Text, Name.Function),
             ),
-            # types
-            # type after colon:
-            # :Type
+            # NEW: instantiation and inheritance contexts (Fixes "new SimpleThreadPool")
             (
-                r"(:)(\s*)([A-Z]\w*)",
-                bygroups(Punctuation, Text, Name.Class),
+                r"\b(new|extends|implements)\b(\s+)([A-Z]\w*)",
+                bygroups(Keyword, Text, Name.Class),
             ),
-            # generic type name:
-            # Type<
+            # Types
+            (r"(:)(\s*)([A-Z]\w*)", bygroups(Punctuation, Text, Name.Class)),
             (r"\b([A-Z]\w*)(?=\s*<)", Name.Class),
-            # builtin types
+            # Builtin types & keywords
             (words(types, suffix=r"\b"), Keyword.Type),
-            # keywords
             (words(keywords, suffix=r"\b"), Keyword),
-            # constants
-            (r"\b[A-Z][A-Z0-9_]*\b", Name.Constant),
-            # numbers
+            # Constants (strictly ALL CAPS, at least 2 chars)
+            (r"\b[A-Z]{2,}[A-Z0-9_]*\b", Name.Constant),
+            # Numbers
             (r"0x[0-9a-fA-F]+", Number.Hex),
             (r"\d+\.\d+([eE][+-]?\d+)?", Number.Float),
             (r"\d+[eE][+-]?\d+", Number.Float),
             (r"\d+", Number.Integer),
-            # strings
+            # Strings
             (r'"', String.Double, "string"),
             (r"'", String.Single),
-            # generic brackets
+            # Generic brackets & identifiers
             (r"[<>]", Punctuation),
-            # identifiers
             (r"[A-Za-z_]\w*", Name),
-            # operators
+            # Operators & Punctuation
             (
-                r"==|!=|<=|>=|=>|->|&&|\|\||<<|>>|>>>"
-                r"|\+\+|--|\+=|-=|\*=|/=|%=|&=|\|=|\^=",
+                r"==|!=|<=|>=|=>|->|&&|\|\||<<|>>|>>>|\+\+|--|\+=|-=|\*=|/=|%=|&=|\|=|\^=",
                 Operator,
             ),
             (r"[+\-*/%=&|^~!?]", Operator),
-            # punctuation
             (r"[{}\[\]();:,.]", Punctuation),
         ],
         "comment": [
@@ -144,7 +132,7 @@ class BetterHaxeLexer(RegexLexer):
             (r"\$\{[^}]+\}", String.Interpol),
             (r"\$[A-Za-z_]\w*", String.Interpol),
             (r'"', String.Double, "#pop"),
-            (r'[^\\"$]+', String.Double),
-            (r'[$\\"]', String.Double),
+            (r'[^"\\$]+', String.Double),
+            (r"[$\\]", String.Double),
         ],
     }

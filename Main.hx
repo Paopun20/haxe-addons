@@ -5,6 +5,8 @@ import haxe.addons.types.UInt8;
 import haxe.addons.types.Int8;
 import haxe.addons.collections.Deque;
 import haxe.addons.system.Path;
+import haxe.addons.thread.SimpleThreadPool;
+import sys.thread.Thread;
 
 class Main {
 	static function dequeTest() {
@@ -72,7 +74,7 @@ class Main {
 	}
 
 	static function pathTest() {
-		var cwd: Path = Path.cwd();
+		var cwd:Path = Path.cwd();
 		trace(cwd);
 		var path:Path = "path/to";
 		trace(path.toString());
@@ -89,11 +91,42 @@ class Main {
 		folder.mkdir(true, true);
 	}
 
+	static function simpleThreadPoolTest() {
+		var stp = new SimpleThreadPool(4);
+
+		var counter = 0;
+		var tasks = 1024;
+		var completed = 0;
+
+		for (_ in 0...tasks) {
+			stp.run(thread -> {
+				Sys.sleep(Math.random() * 0.01);
+				thread.editGlobalVar(() -> {
+					counter++;
+					completed++;
+				});
+			});
+		}
+
+		while (completed < tasks) {
+			Sys.sleep(0.01);
+		}
+
+		trace("Counter = " + counter);
+		trace("Expected = " + tasks);
+
+		if (counter == tasks)
+			trace("PASS");
+		else
+			trace("FAIL");
+	}
+
 	static function main() {
 		dequeTest();
 		int8Test();
 		uint8Test();
 		bitfieldTest();
 		pathTest();
+		simpleThreadPoolTest();
 	}
 }
