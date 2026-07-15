@@ -8,8 +8,8 @@ import haxe.addons.thread.SimpleThread;
 ```
 
 !!! warning "Platform support"
-Only available on threaded targets: `cpp`, `cs`, `hl`, `eval`, `python`, `lua`, `java`, `jvm`.
-Using this module on `js` or `flash` will fail to compile.
+    Only available on threaded targets: `cpp`, `cs`, `hl`, `eval`, `python`, `lua`, `java`, `jvm`.
+    Using this module on `js` or `flash` will fail to compile.
 
 ---
 
@@ -22,11 +22,11 @@ a single, well-known mutex to reach for instead of managing `Mutex` instances
 by hand.
 
 !!! tip "When to reach for this"
-Use `SimpleThreadPool` when you have many short-lived, independent units
-of work (parsing files, hashing, network calls) that occasionally need to
-update a shared result — a counter, a list, a map. If tasks don't share
-state at all, a plain `ElasticThreadPool` is enough and avoids the extra
-indirection.
+    Use `SimpleThreadPool` when you have many short-lived, independent units
+    of work (parsing files, hashing, network calls) that occasionally need to
+    update a shared result — a counter, a list, a map. If tasks don't share
+    state at all, a plain `ElasticThreadPool` is enough and avoids the extra
+    indirection.
 
 ---
 
@@ -85,10 +85,10 @@ new(maxThreadsCount:Int, threadTimeout:Float = 60)
 | `#!haxe shutdown():Void`                   | Shut down the pool and release all threads    |
 
 !!! note "`shutdown()` does not block"
-Calling `shutdown()` stops the pool from accepting new tasks and releases
-idle threads, but it does not wait for already-running tasks to finish.
-If you need to wait for completion, track it yourself — see
-[Waiting for completion](#waiting-for-completion) below.
+    Calling `shutdown()` stops the pool from accepting new tasks and releases
+    idle threads, but it does not wait for already-running tasks to finish.
+    If you need to wait for completion, track it yourself — see
+    [Waiting for completion](#waiting-for-completion) below.
 
 ### Basic example
 
@@ -111,9 +111,9 @@ pool.shutdown();
 Handle passed to each task, providing safe access to shared state.
 
 !!! danger "Do not construct directly"
-`SimpleThread` instances are created internally by `SimpleThreadPool`.
-There is no public constructor — always obtain one through the callback
-passed to `run()`.
+    `SimpleThread` instances are created internally by `SimpleThreadPool`.
+    There is no public constructor — always obtain one through the callback
+    passed to `run()`.
 
 ### Methods
 
@@ -154,9 +154,9 @@ pool.run(st -> {
 ```
 
 !!! warning "`isGlobalLock` is a snapshot, not a guarantee"
-The lock state can change between the check and the following
-`editGlobalVar` call. Use it to _avoid unnecessary contention_ (e.g. skip
-a low-priority update), not as a substitute for the mutex itself.
+    The lock state can change between the check and the following
+    `editGlobalVar` call. Use it to _avoid unnecessary contention_ (e.g. skip
+    a low-priority update), not as a substitute for the mutex itself.
 
 ---
 
